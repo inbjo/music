@@ -1131,7 +1131,7 @@ function mc_get_song_by_id($songid, $site = 'netease', $multi = false)
 // 获取音频信息 - url
 function mc_get_song_by_url($url)
 {
-    preg_match('/music\.163\.com\/(#(\/m)?|m)\/song(\?id=|\/)(\d+)/i', $url, $match_netease);
+    preg_match('/music\.163\.com\/song(\?id=|\/)(\d+)/i', $url, $match_netease);
     preg_match('/(www|m)\.1ting\.com\/(player\/b6\/player_|#\/song\/)(\d+)/i', $url, $match_1ting);
     preg_match('/music\.baidu\.com\/song\/(\d+)/i', $url, $match_baidu);
     preg_match('/(m|www)\.kugou\.com\/(play\/info\/|song\/\#hash\=)([a-z0-9]+)/i', $url, $match_kugou);
@@ -1147,7 +1147,7 @@ function mc_get_song_by_url($url)
     preg_match('/kg\d?\.qq\.com\/(node\/)?play\?s=([a-zA-Z0-9_-]+)/i', $url, $match_kg_id);
     preg_match('/kg\d?\.qq\.com\/(node\/)?personal\?uid=([a-z0-9_-]+)/i', $url, $match_kg_uid);
     if (!empty($match_netease)) {
-        $songid   = $match_netease[4];
+        $songid   = $match_netease[2];
         $songtype = 'netease';
     } elseif (!empty($match_1ting)) {
         $songid   = $match_1ting[3];
